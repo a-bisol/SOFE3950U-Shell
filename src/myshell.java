@@ -34,10 +34,13 @@ public class myshell {
             //Switch statement depending on first input argument
             switch (inArgs.get(0)){
                 case "cd":
-                    System.out.println("Change working directory");
+                    System.setProperty("user.dir", inArgs.get(1));
+                    env[0]=System.getProperty("user.dir");
                     break;
                 case "clr":
-                    System.out.println("Clear screen");
+                    //Will only clear screen on terminals that support ANSI Escape code, no output otherwise
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
                     break;
                 case "dir":
                     System.out.println(env[0]);
