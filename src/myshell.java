@@ -1,9 +1,8 @@
 import java.io.*;
-import java.util.*;
-
-/*TODO
-Process threads on &
- */
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class myshell {
     //Global variables used for main and process methods
@@ -24,9 +23,11 @@ public class myshell {
         //Buffer utilized for handling user input before splitting to individual arguments
         String inBuff;
 
+        //Flag utilized for handling if user input will be run through a separate thread
         boolean threadFlag = false;
 
         while (true){
+            //Display prompt if a thread hasn't been called recently (prevents thread output from layering on top of main output)
             if (!threadFlag){
                 System.out.print(env[0]+"> ");
             }
@@ -34,6 +35,7 @@ public class myshell {
             inArgs = new ArrayList<>(Arrays.asList(inBuff.split(" ")));
             threadFlag = false;
 
+            //Creates a new thread and passes arguments to it
             if (inArgs.contains("&")){
                 threadFlag = true;
                 inArgs.remove("&");
