@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c22899-9117-4514-a031-33b004df865f" name="Changes" comment="">
+    <list default="true" id="a4c22899-9117-4514-a031-33b004df865f" name="Changes" comment="File IO relatively works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/myshell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myshell.java" afterDir="false" />
     </list>
@@ -99,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646434397208</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="File IO relatively works">
+      <created>1646443173417</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1646443173417</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +126,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Trying to get everything on same page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to get everything on same page" />
+    <MESSAGE value="File IO should be working now" />
+    <MESSAGE value="File IO relatively works" />
+    <option name="LAST_COMMIT_MESSAGE" value="File IO relatively works" />
   </component>
 </project>

@@ -106,7 +106,7 @@ public class myshell {
                 String echoOut = String.join(" ", inArgs);
                 if (outputIndex > 0){
                     try {
-                        FileWriter out = new FileWriter(inArgs.get(outputIndex + 1));
+                        FileWriter out = new FileWriter(inArgs.get(outputIndex));
                         out.write(echoOut);
                         out.close();
                     } catch (IOException e) {
