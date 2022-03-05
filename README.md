@@ -1,6 +1,5 @@
-# SOFE3950U-Shell
+# SOFE3950U Lab Report 2; Project Shell
 
-## Operating Systems Lab 2 Project Shell
 Kinjal Shah; 100743551
 
 Raza Naqvi; 100754516
