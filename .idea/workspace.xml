@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50cb07f5-4ca1-415f-a70a-58bcff12bdd4" name="Changes" comment="Initial commit">
+    <list default="true" id="50cb07f5-4ca1-415f-a70a-58bcff12bdd4" name="Changes" comment="Trying to get everything on same page">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/myshell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myshell.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +75,7 @@
       <workItem from="1645485593755" duration="49000" />
       <workItem from="1646080322373" duration="2195000" />
       <workItem from="1646082788056" duration="18000" />
-      <workItem from="1646431985707" duration="1602000" />
+      <workItem from="1646431985707" duration="3594000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1646082476352</created>
@@ -90,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646433512151</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Trying to get everything on same page">
+      <created>1646434397208</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1646434397208</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,6 +117,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Trying to get everything on same page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to get everything on same page" />
   </component>
 </project>
