@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c22899-9117-4514-a031-33b004df865f" name="Changes" comment="Fixed echo output">
+    <list default="true" id="a4c22899-9117-4514-a031-33b004df865f" name="Changes" comment="Added help functionality and updated exit codes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/myshell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myshell.java" afterDir="false" />
     </list>
@@ -113,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646443339464</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added help functionality and updated exit codes">
+      <created>1646444690290</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1646444690290</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +143,7 @@
     <MESSAGE value="File IO should be working now" />
     <MESSAGE value="File IO relatively works" />
     <MESSAGE value="Fixed echo output" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed echo output" />
+    <MESSAGE value="Added help functionality and updated exit codes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added help functionality and updated exit codes" />
   </component>
 </project>

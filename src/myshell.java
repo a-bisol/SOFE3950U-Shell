@@ -3,13 +3,14 @@ import java.util.*;
 
 /*TODO
 Process threads on &
-File IO for myshell
  */
 
 public class myshell {
+    //Global variables used for main and process methods
     static int outputIndex=0;
     static ArrayList<String> inArgs;
     static String[] env = new String[3];
+    static Scanner in = new Scanner(System.in);
     public static void main(String[] args){
         /* Writes System properties to the env array
         * env[0] represents the current working directory
@@ -23,7 +24,6 @@ public class myshell {
         //Buffer utilized for handling user input before splitting to individual arguments
         String inBuff;
 
-        Scanner in = new Scanner(System.in);
         while (true){
             System.out.print(env[0]+"> ");
             inBuff=in.nextLine();
@@ -58,14 +58,14 @@ public class myshell {
                 //outputIndex is used to keep track of where the filename is in the arguments for the FileWriter later
                 outputIndex=i;
             }
-            process(in);
+            process(inArgs);
         }
     }
 
-    static void process(Scanner in) {
-        switch (inArgs.get(0)){
+    static void process(ArrayList<String> args) {
+        switch (args.get(0)){
             case "cd":
-                System.setProperty("user.dir", inArgs.get(1));
+                System.setProperty("user.dir", args.get(1));
                 env[0]=System.getProperty("user.dir");
                 break;
             case "clr":
@@ -76,7 +76,7 @@ public class myshell {
             case "dir":
                 if (outputIndex > 0){
                     try {
-                        FileWriter out = new FileWriter(inArgs.get(outputIndex + 1));
+                        FileWriter out = new FileWriter(args.get(outputIndex + 1));
                         out.write(env[0]);
                         out.close();
                     } catch (IOException e) {
@@ -90,7 +90,7 @@ public class myshell {
             case "environ":
                 if (outputIndex > 0){
                     try {
-                        FileWriter out = new FileWriter(inArgs.get(outputIndex + 1));
+                        FileWriter out = new FileWriter(args.get(outputIndex + 1));
                         out.write(env[0]+" "+env[1]+" "+env[2]);
                         out.close();
                     } catch (IOException e) {
@@ -102,8 +102,8 @@ public class myshell {
                 }
                 break;
             case "echo":
-                inArgs.remove(0);
-                String echoOut = String.join(" ", inArgs);
+                args.remove(0);
+                String echoOut = String.join(" ", args);
                 if (outputIndex > 0){
                     try {
                         FileWriter out = new FileWriter(inArgs.get(outputIndex));
@@ -131,7 +131,14 @@ public class myshell {
                 System.exit(1);
                 break;
             case "myshell":
-                System.out.println("Process file in");
+                try (BufferedReader br = new BufferedReader(new FileReader(args.get(1)))){
+                    for(String line; (line = br.readLine()) != null; ){
+                        ArrayList<String> newArgs = new ArrayList<>(Arrays.asList(line.split(" ")));
+                        process(newArgs);
+                    }
+                } catch (IOException e) {
+                    System.exit(7);
+                }
                 break;
             default:
                 System.out.println("Please enter a valid command");
@@ -146,4 +153,5 @@ public class myshell {
 4 - Error deleting/creating file for output
 5 - Error writing to file
 6 - Error reading README file
+7 - Error reading myshell input file
  */
