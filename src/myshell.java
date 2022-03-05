@@ -77,9 +77,13 @@ public class myshell {
     static void process(ArrayList<String> args) {
         switch (args.get(0)){
             case "cd":
-                //allows to change current directory to specified one; If no directory is provided, prints current one
-                System.setProperty("user.dir", args.get(1));
-                env[0]=System.getProperty("user.dir");
+                //Changes the current directory to the specified one. If no directory is provided, print current dir
+                if (args.size()==1){
+                    System.out.println(env[0]);
+                } else {
+                    System.setProperty("user.dir", args.get(1));
+                    env[0]=System.getProperty("user.dir");
+                }
                 break;
             case "clr":
                 //Will only clear screen on terminals that support ANSI Escape code, no output otherwise
