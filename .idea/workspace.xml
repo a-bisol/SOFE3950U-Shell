@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c22899-9117-4514-a031-33b004df865f" name="Changes" comment="Basic thread functionality?">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/google-java-format.xml" afterDir="false" />
+    <list default="true" id="a4c22899-9117-4514-a031-33b004df865f" name="Changes" comment="Final? upload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/myshell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myshell.java" afterDir="false" />
     </list>
@@ -152,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646452408810</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Final? upload">
+      <created>1646453122644</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1646453122644</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +182,8 @@
     <MESSAGE value="Added help functionality and updated exit codes" />
     <MESSAGE value="Added myshell functionality" />
     <MESSAGE value="Basic thread functionality?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic thread functionality?" />
+    <MESSAGE value="Final? upload" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final? upload" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

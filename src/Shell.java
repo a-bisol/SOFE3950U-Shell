@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -27,17 +24,29 @@ public class Shell implements Runnable{
                 System.out.flush();
                 break;
             case "dir":
+                String[] pathnames;
+                File dir;
+                if (args.size()==1){
+                    dir = new File(myshell.env[0]);
+                } else{
+                    dir = new File(args.get(1));
+                }
+                pathnames = dir.list();
                 if (myshell.outputIndex > 0){
                     try {
                         FileWriter out = new FileWriter(args.get(myshell.outputIndex + 1));
-                        out.write(myshell.env[0]);
+                        for (String pathname : pathnames){
+                            out.write(pathname);
+                        }
                         out.close();
                     } catch (IOException e) {
                         System.exit(5);
                     }
                     myshell.outputIndex = 0;
                 } else{
-                    System.out.println(myshell.env[0]);
+                    for (String pathname : pathnames){
+                        System.out.println(pathname);
+                    }
                 }
                 break;
             case "environ":

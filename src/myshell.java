@@ -86,17 +86,29 @@ public class myshell {
                 System.out.flush();
                 break;
             case "dir":
+                String[] pathnames;
+                File dir;
+                if (args.size()==1){
+                    dir = new File(env[0]);
+                } else{
+                    dir = new File(args.get(1));
+                }
+                pathnames = dir.list();
                 if (outputIndex > 0){
                     try {
                         FileWriter out = new FileWriter(args.get(outputIndex + 1));
-                        out.write(env[0]);
+                        for (String pathname : pathnames){
+                            out.write(pathname);
+                        }
                         out.close();
                     } catch (IOException e) {
                         System.exit(5);
                     }
                     outputIndex = 0;
                 } else{
-                    System.out.println(env[0]);
+                    for (String pathname : pathnames){
+                        System.out.println(pathname);
+                    }
                 }
                 break;
             case "environ":
