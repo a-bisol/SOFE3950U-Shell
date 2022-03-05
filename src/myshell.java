@@ -1,16 +1,14 @@
 import java.io.*;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /*TODO
 Process threads on &
-File IO for < and myshell
+File IO for > and myshell
  */
 
 public class myshell {
-    static List<String> inArgs;
+    static int outputIndex=0;
+    static ArrayList<String> inArgs;
     static String[] env = new String[3];
     public static void main(String[] args){
         /* Writes System properties to the env array
@@ -21,8 +19,6 @@ public class myshell {
         env[0]=System.getProperty("user.dir");
         env[1]=System.getProperty("user.home");
         env[2]=System.getProperty("java.version");
-        boolean inputFlag=false;
-        boolean outputFlag=false;
 
         //Buffer utilized for handling user input before splitting to individual arguments
         String inBuff;
@@ -31,24 +27,26 @@ public class myshell {
         while (true){
             System.out.print(env[0]+"> ");
             inBuff=in.nextLine();
-            inArgs = Arrays.asList(inBuff.split(" "));
+            inArgs = new ArrayList<>(Arrays.asList(inBuff.split(" ")));
 
             if (inArgs.contains("&")){
                 //Logic for thread handling
-            } else if (inArgs.contains("<")){
+            }
+            //Reads first line of given file and uses it for command arguments in place of "< filename"
+            else if (inArgs.contains("<")){
                 int i = inArgs.indexOf("<");
                 try(BufferedReader br = new BufferedReader((new FileReader(inArgs.get(i + 1))))){
-                    String line=br.readLine();
-                    System.out.print(inArgs.get(i+1));
-                    String[] lineBuffer = line.split(" ");
-                    Collections.addAll(inArgs, lineBuffer);
+                    inArgs.remove(i+1);
+                    inArgs.remove(i);
+                    Collections.addAll(inArgs, br.readLine().split(" "));
                 } catch (FileNotFoundException e) {
                     System.exit(2);
                 } catch (IOException e) {
                     System.exit(3);
                 }
-                inputFlag=true;
-            } else if (inArgs.contains(">")) {
+            }
+            //Deletes the file if it exists, then creates a new blank file
+            else if (inArgs.contains(">")) {
                 int i = inArgs.indexOf(">");
                 try {
                     File newFile = new File(inArgs.get(i + 1));
@@ -57,13 +55,14 @@ public class myshell {
                 } catch (IOException e) {
                     System.exit(4);
                 }
-                outputFlag=true;
+                //outputIndex is used to keep track of where the filename is in the arguments for the FileWriter later
+                outputIndex=i;
             }
-            process(outputFlag, inputFlag, in);
+            process(in);
         }
     }
 
-    static void process(boolean output, boolean input, Scanner in){
+    static void process(Scanner in){
         switch (inArgs.get(0)){
             case "cd":
                 System.setProperty("user.dir", inArgs.get(1));
@@ -75,16 +74,48 @@ public class myshell {
                 System.out.flush();
                 break;
             case "dir":
-                System.out.println(env[0]);
+                if (outputIndex > 0){
+                    try {
+                        FileWriter out = new FileWriter(inArgs.get(outputIndex + 1));
+                        out.write(env[0]);
+                        out.close();
+                    } catch (IOException e) {
+                        System.exit(4);
+                    }
+                    outputIndex = 0;
+                } else{
+                    System.out.println(env[0]);
+                }
                 break;
             case "environ":
-                System.out.println(env[0]+" "+env[1]+" "+env[2]);
+                if (outputIndex > 0){
+                    try {
+                        FileWriter out = new FileWriter(inArgs.get(outputIndex + 1));
+                        out.write(env[0]+" "+env[1]+" "+env[2]);
+                        out.close();
+                    } catch (IOException e) {
+                        System.exit(4);
+                    }
+                    outputIndex = 0;
+                } else{
+                    System.out.println(env[0]+" "+env[1]+" "+env[2]);
+                }
                 break;
             case "echo":
-                for (String s:inArgs) {
-                    System.out.print(s+" ");
+                inArgs.remove(0);
+                String echoOut = String.join(" ", inArgs);
+                if (outputIndex > 0){
+                    try {
+                        FileWriter out = new FileWriter(inArgs.get(outputIndex + 1));
+                        out.write(echoOut);
+                        out.close();
+                    } catch (IOException e) {
+                        System.exit(4);
+                    }
+                    outputIndex = 0;
+                } else{
+                    System.out.println(echoOut);
                 }
-                System.out.println();
                 break;
             case "help":
                 System.out.println("readme file goes here");
