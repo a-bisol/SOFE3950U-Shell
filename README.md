@@ -35,23 +35,38 @@ For our “myshell.java” we are tracking user’s working directory, users hom
 
 
 List of implemented commands:
-cd <directory>: allows to change the current directory to the specified <directory>. If the <directory> is not present, it simply prints the current directory. 
+cd <directory>: allows to change the current directory to the specified <directory>. If the <directory> is not present, it simply prints the current directory.
+
 clr: Clears the screen of all previous commands
+
 dir <directory>: lists the contents of the specified <directory>
+
 environ: lists the environment strings
+
 echo <comment>: Displays the <comment> followed by a new line
+
 help: displays the user manual for the shell
+
 pause: Pauses the operation of the shell until “Enter” is pressed
+
 quit: Quits the shell
+
 myshell: prints out the full path for the shell executable
 
 Error Codes in myshell.java and what they mean:
+
 1 -Regular quit command
+
 2 -File not found for file input
+
 3 -Error reading file for input 
+
 4 -Error deleting/creating file for output
+
 5 -Error writing to file
+
 6 -Error reading README file
+
 7 -Error reading myshell input file
 
 
