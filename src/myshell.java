@@ -75,6 +75,7 @@ public class myshell {
     static void process(ArrayList<String> args) {
         switch (args.get(0)){
             case "cd":
+                //allows to change current directory to specified one; If no directory is provided, prints current one
                 System.setProperty("user.dir", args.get(1));
                 env[0]=System.getProperty("user.dir");
                 break;
@@ -84,6 +85,7 @@ public class myshell {
                 System.out.flush();
                 break;
             case "dir":
+                //Lists the current directory contents
                 if (outputIndex > 0){
                     try {
                         FileWriter out = new FileWriter(args.get(outputIndex + 1));
@@ -98,6 +100,7 @@ public class myshell {
                 }
                 break;
             case "environ":
+                //prints the user's working directory, home directory, and the running java version
                 if (outputIndex > 0){
                     try {
                         FileWriter out = new FileWriter(args.get(outputIndex + 1));
@@ -112,6 +115,7 @@ public class myshell {
                 }
                 break;
             case "echo":
+                //Displays the comment entered
                 args.remove(0);
                 String echoOut = String.join(" ", args);
                 if (outputIndex > 0){
@@ -128,6 +132,7 @@ public class myshell {
                 }
                 break;
             case "help":
+                //displays the user manual for the shell
                 try (BufferedReader br = new BufferedReader(new FileReader("README.md"))) {
                     br.lines().forEach(System.out::println);
                 } catch (IOException e) {
@@ -135,12 +140,15 @@ public class myshell {
                 }
                 break;
             case "pause":
+                //Pauses shell operations till "Enter" is pressed
                 in.nextLine();
                 break;
             case "quit":
+                //quits the shell
                 System.exit(1);
                 break;
             case "myshell":
+                //Prints out the path for the shell executable
                 try (BufferedReader br = new BufferedReader(new FileReader(args.get(1)))){
                     for(String line; (line = br.readLine()) != null; ){
                         ArrayList<String> newArgs = new ArrayList<>(Arrays.asList(line.split(" ")));
