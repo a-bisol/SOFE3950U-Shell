@@ -24,13 +24,21 @@ public class myshell {
         //Buffer utilized for handling user input before splitting to individual arguments
         String inBuff;
 
+        boolean threadFlag = false;
+
         while (true){
-            System.out.print(env[0]+"> ");
+            if (!threadFlag){
+                System.out.print(env[0]+"> ");
+            }
             inBuff=in.nextLine();
             inArgs = new ArrayList<>(Arrays.asList(inBuff.split(" ")));
+            threadFlag = false;
 
             if (inArgs.contains("&")){
-                //Logic for thread handling
+                threadFlag = true;
+                inArgs.remove("&");
+                Thread t = new Thread(new Shell(inArgs));
+                t.start();
             }
             //Reads first line of given file and uses it for command arguments in place of "< filename"
             else if (inArgs.contains("<")){
@@ -58,7 +66,9 @@ public class myshell {
                 //outputIndex is used to keep track of where the filename is in the arguments for the FileWriter later
                 outputIndex=i;
             }
-            process(inArgs);
+            if (!threadFlag){
+                process(inArgs);
+            }
         }
     }
 
@@ -106,7 +116,7 @@ public class myshell {
                 String echoOut = String.join(" ", args);
                 if (outputIndex > 0){
                     try {
-                        FileWriter out = new FileWriter(inArgs.get(outputIndex));
+                        FileWriter out = new FileWriter(args.get(outputIndex));
                         out.write(echoOut);
                         out.close();
                     } catch (IOException e) {
