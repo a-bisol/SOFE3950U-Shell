@@ -3,7 +3,7 @@ import java.util.*;
 
 /*TODO
 Process threads on &
-File IO for > and myshell
+File IO for myshell
  */
 
 public class myshell {
@@ -62,7 +62,7 @@ public class myshell {
         }
     }
 
-    static void process(Scanner in){
+    static void process(Scanner in) {
         switch (inArgs.get(0)){
             case "cd":
                 System.setProperty("user.dir", inArgs.get(1));
@@ -80,7 +80,7 @@ public class myshell {
                         out.write(env[0]);
                         out.close();
                     } catch (IOException e) {
-                        System.exit(4);
+                        System.exit(5);
                     }
                     outputIndex = 0;
                 } else{
@@ -94,7 +94,7 @@ public class myshell {
                         out.write(env[0]+" "+env[1]+" "+env[2]);
                         out.close();
                     } catch (IOException e) {
-                        System.exit(4);
+                        System.exit(5);
                     }
                     outputIndex = 0;
                 } else{
@@ -110,7 +110,7 @@ public class myshell {
                         out.write(echoOut);
                         out.close();
                     } catch (IOException e) {
-                        System.exit(4);
+                        System.exit(5);
                     }
                     outputIndex = 0;
                 } else{
@@ -118,7 +118,11 @@ public class myshell {
                 }
                 break;
             case "help":
-                System.out.println("readme file goes here");
+                try (BufferedReader br = new BufferedReader(new FileReader("README.md"))) {
+                    br.lines().forEach(System.out::println);
+                } catch (IOException e) {
+                    System.exit(6);
+                }
                 break;
             case "pause":
                 in.nextLine();
@@ -134,3 +138,12 @@ public class myshell {
         }
     }
 }
+
+/* Exit codes
+1 - Regular quit command
+2 - File not found for file input
+3 - Error reading file for input
+4 - Error deleting/creating file for output
+5 - Error writing to file
+6 - Error reading README file
+ */
