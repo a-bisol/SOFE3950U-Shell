@@ -77,7 +77,10 @@ This makes it easier for the program to manipulate and search for certain charac
 Finally, a switch case is run by the process method based on the argument that was first inputted by the user.
 
 Contribution:
+
 Readme file and documentation - Kinjal Shah, Raza Naqvi
+
 Shell coding, thread implementation, code comments - Ivan Bisol
+
 Attempting thread implementation, readme/documentation, and code comments - Raphaiel Halim
 
