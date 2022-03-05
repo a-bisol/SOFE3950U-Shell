@@ -35,6 +35,7 @@ For our “myshell.java” we are tracking user’s working directory, users hom
 
 
 List of implemented commands:
+
 cd <directory>: allows to change the current directory to the specified <directory>. If the <directory> is not present, it simply prints the current directory.
 
 clr: Clears the screen of all previous commands
