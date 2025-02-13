@@ -6,7 +6,7 @@ Raza Naqvi; 100754516
 
 Raphaiel Halim; 100700318
 
-Ivan Bisol; 100701735
+Ash Bisol; 100701735
 
 ### Documentation: Readme
 
